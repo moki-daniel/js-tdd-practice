@@ -14,11 +14,19 @@ Spare: when a player hits all the pins over the course of two rolls (one turn)
 Strike: when a player hits all the pins in a single roll --*/
 
 describe("bowling game", function() {
-    it("should properly calculate a gutter game", function() {
-        it("should properly calculate a strike", function() {
-            it("should properly calculate a spare", function() {
 
-            })
-        })
-    })
-})
+/*--A bowling player rolls twice in one turn, right, and they have 20 turns in one game? Let's say that, 
+every single turn, they hit zero pins., This is an easy scenario to test! I'll add it to the first spec:--*/
+        it("should properly calculate a gutter game", function() {
+            game.roll(20, 0);
+            expect(game.score()).toEqual(0);
+        });
+        it("should properly calculate a strike", function() {
+            game.roll(20, 20);
+            expect(game.score()).toEqual(20);
+            it("should properly calculate a spare", function() {
+                game.roll(20, 10);
+                expect(game.score()).toEqual(10);
+            });
+        });
+    });
